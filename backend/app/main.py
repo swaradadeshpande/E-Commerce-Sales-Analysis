@@ -1,11 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from database import engine, SessionLocal
-from models import Base
-from analytics import get_dashboard_data
-from crud import import_csv_to_db
-
+from .database import engine, SessionLocal
+from .models import Base
+from .analytics import get_dashboard_data
+from .crud import import_csv_to_db
 app = FastAPI()
 
 # Enable CORS
@@ -25,7 +24,7 @@ Base.metadata.create_all(bind=engine)
 db = SessionLocal()
 
 # Uncomment first time only
-# import_csv_to_db(db)
+#import_csv_to_db(db)
 
 @app.get('/dashboard')
 

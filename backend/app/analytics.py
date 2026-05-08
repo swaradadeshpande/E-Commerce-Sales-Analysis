@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from models import Sales
 from sqlalchemy import func
+from .models import Sales
 
 def get_dashboard_data(db: Session):
 
@@ -18,22 +18,40 @@ def get_dashboard_data(db: Session):
 
     # Top Products
 
-    top_products = db.query(
+    top_products_query = db.query(
         Sales.product,
         func.sum(Sales.total_sale)
     ).group_by(Sales.product).all()
 
+    top_products = []
+
+    for item in top_products_query:
+
+        top_products.append({
+            "product": item[0],
+            "sales": float(item[1])
+        })
+
     # Category Sales
 
-    category_sales = db.query(
+    category_sales_query = db.query(
         Sales.category,
         func.sum(Sales.total_sale)
     ).group_by(Sales.category).all()
 
+    category_sales = []
+
+    for item in category_sales_query:
+
+        category_sales.append({
+            "category": item[0],
+            "sales": float(item[1])
+        })
+
     return {
-        "total_sales": total_sales,
-        "total_quantity": total_quantity,
-        "total_products": total_products,
+        "total_sales": float(total_sales),
+        "total_quantity": int(total_quantity),
+        "total_products": int(total_products),
         "top_products": top_products,
         "category_sales": category_sales
     }

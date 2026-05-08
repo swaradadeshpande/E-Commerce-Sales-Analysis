@@ -1,65 +1,80 @@
 async function loadDashboard() {
 
-    const response = await fetch(
-        'http://127.0.0.1:8000/dashboard'
-    );
+    try {
 
-    const data = await response.json();
+        const response = await fetch(
+            'http://127.0.0.1:8000/dashboard'
+        );
 
-    // KPI
+        const data = await response.json();
 
-    document.getElementById('sales').innerText =
-        `₹ ${data.total_sales}`;
+        console.log(data);
 
-    document.getElementById('quantity').innerText =
-        data.total_quantity;
+        // KPI Cards
 
-    document.getElementById('products').innerText =
-        data.total_products;
+        document.getElementById('sales').innerText =
+            `₹ ${data.total_sales}`;
 
-    // Product Chart
+        document.getElementById('quantity').innerText =
+            data.total_quantity;
 
-    const productLabels =
-        data.top_products.map(item => item[0]);
+        document.getElementById('products').innerText =
+            data.total_products;
 
-    const productValues =
-        data.top_products.map(item => item[1]);
+        // -----------------------------
+        // Product Chart
+        // -----------------------------
 
-    new Chart(document.getElementById('productChart'), {
+        const productLabels =
+            data.top_products.map(item => item.product);
 
-        type: 'bar',
+        const productValues =
+            data.top_products.map(item => item.sales);
 
-        data: {
-            labels: productLabels,
+        new Chart(document.getElementById('productChart'), {
 
-            datasets: [{
-                label: 'Top Products',
-                data: productValues,
-                borderWidth: 1
-            }]
-        }
-    });
+            type: 'bar',
 
-    // Category Chart
+            data: {
 
-    const categoryLabels =
-        data.category_sales.map(item => item[0]);
+                labels: productLabels,
 
-    const categoryValues =
-        data.category_sales.map(item => item[1]);
+                datasets: [{
+                    label: 'Top Products',
+                    data: productValues,
+                    borderWidth: 1
+                }]
+            }
+        });
 
-    new Chart(document.getElementById('categoryChart'), {
+        // -----------------------------
+        // Category Chart
+        // -----------------------------
 
-        type: 'pie',
+        const categoryLabels =
+            data.category_sales.map(item => item.category);
 
-        data: {
-            labels: categoryLabels,
+        const categoryValues =
+            data.category_sales.map(item => item.sales);
 
-            datasets: [{
-                data: categoryValues
-            }]
-        }
-    });
+        new Chart(document.getElementById('categoryChart'), {
+
+            type: 'pie',
+
+            data: {
+
+                labels: categoryLabels,
+
+                datasets: [{
+                    data: categoryValues
+                }]
+            }
+        });
+
+    } catch(error) {
+
+        console.error('ERROR:', error);
+    }
 }
 
 loadDashboard();

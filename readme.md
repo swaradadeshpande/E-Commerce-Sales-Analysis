@@ -226,6 +226,11 @@ GET /dashboard
 
 ---
 
+<img width="673" height="336" alt="image" src="https://github.com/user-attachments/assets/b7a8f53a-407f-4819-b9db-0f01a56e0475" />
+
+<img width="673" height="673" alt="image" src="https://github.com/user-attachments/assets/1b5bbc3d-4484-4930-9016-8fba9018fa46" />
+
+
 # 📈 Visualizations Included
 
 - Product Sales Bar Chart

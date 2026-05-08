@@ -134,7 +134,20 @@ Open MySQL and create database:
 ```sql
 CREATE DATABASE ecommerce_dashboard;
 ```
+execute this 
+```sql
+USE ecommerce_dashboard;
 
+CREATE TABLE sales (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    order_id INT,
+    product VARCHAR(255),
+    category VARCHAR(255),
+    quantity INT,
+    price_per_unit FLOAT,
+    total_sale FLOAT
+);
+```
 ---
 
 # 5️⃣ Configure Database Connection

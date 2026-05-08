@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>E-Commerce Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>E-Commerce Sales Dashboard</h1>
+
+    <!-- KPI Cards -->
+
+    <div class="cards">
+
+        <div class="card">
+            <h2>Total Sales</h2>
+            <p id="sales"></p>
+        </div>
+
+        <div class="card">
+            <h2>Total Quantity</h2>
+            <p id="quantity"></p>
+        </div>
+
+        <div class="card">
+            <h2>Total Products</h2>
+            <p id="products"></p>
+        </div>
+
+    </div>
+
+    <!-- Charts -->
+
+    <div class="chart-container">
+
+        <canvas id="productChart"></canvas>
+
+    </div>
+
+    <div class="chart-container">
+
+        <canvas id="categoryChart"></canvas>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

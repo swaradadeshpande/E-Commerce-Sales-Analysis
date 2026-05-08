@@ -1,59 +1,135 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
 
-    <title>E-Commerce Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>E-Commerce Analytics Dashboard</title>
 
     <link rel="stylesheet" href="style.css">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 
 <body>
 
-<div class="container">
+    <div class="dashboard">
 
-    <h1>E-Commerce Sales Dashboard</h1>
+        <!-- Sidebar -->
 
-    <!-- KPI Cards -->
+        <div class="sidebar">
 
-    <div class="cards">
+            <div class="logo">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>SalesAI</span>
+            </div>
 
-        <div class="card">
-            <h2>Total Sales</h2>
-            <p id="sales"></p>
+            <ul class="menu">
+                <li class="active">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-chart-pie"></i>
+                    Analytics
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-box"></i>
+                    Products
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-layer-group"></i>
+                    Categories
+                </li>
+            </ul>
+
         </div>
 
-        <div class="card">
-            <h2>Total Quantity</h2>
-            <p id="quantity"></p>
-        </div>
+        <!-- Main Content -->
 
-        <div class="card">
-            <h2>Total Products</h2>
-            <p id="products"></p>
+        <div class="main-content">
+
+            <!-- Top Bar -->
+
+            <div class="topbar">
+
+                <div>
+                    <h1>E-Commerce Dashboard</h1>
+                    <p>Business Analytics Overview</p>
+                </div>
+
+                <div class="top-right">
+                    <div id="clock"></div>
+                </div>
+
+            </div>
+
+            <!-- KPI Cards -->
+
+            <div class="cards">
+
+                <div class="card gradient1">
+                    <div>
+                        <h3>Total Sales</h3>
+                        <p id="sales">₹0</p>
+                    </div>
+
+                    <i class="fa-solid fa-indian-rupee-sign"></i>
+                </div>
+
+                <div class="card gradient2">
+                    <div>
+                        <h3>Total Quantity</h3>
+                        <p id="quantity">0</p>
+                    </div>
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+
+                <div class="card gradient3">
+                    <div>
+                        <h3>Total Products</h3>
+                        <p id="products">0</p>
+                    </div>
+
+                    <i class="fa-solid fa-box-open"></i>
+                </div>
+
+            </div>
+
+            <!-- Charts -->
+
+            <div class="charts-grid">
+
+                <div class="chart-card">
+                    <h2>Top Products</h2>
+                    <canvas id="productChart"></canvas>
+                </div>
+
+                <div class="chart-card">
+                    <h2>Category Distribution</h2>
+                    <canvas id="categoryChart"></canvas>
+                </div>
+
+            </div>
+
         </div>
 
     </div>
 
-    <!-- Charts -->
-
-    <div class="chart-container">
-
-        <canvas id="productChart"></canvas>
-
-    </div>
-
-    <div class="chart-container">
-
-        <canvas id="categoryChart"></canvas>
-
-    </div>
-
-</div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>
